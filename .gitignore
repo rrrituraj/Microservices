@@ -1,6 +1,8 @@
 # Compiled class file
 *.class
-
+*.xml
+.classpath
+.project
 # Log file
 *.log
 
@@ -24,7 +26,8 @@
 /.setting
 *.MF
 .setting/
-C:/Users/lenovo/Documents/Programmes/microservices/currency-conversion-service/.settings
+.settings
+.idea
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
