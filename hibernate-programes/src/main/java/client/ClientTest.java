@@ -1,5 +1,6 @@
 package client;
 
+import entities.Address;
 import entities.Employee;
 import service.EmployeeService;
 import service.Impl.EmployeeServiceImpl;
@@ -38,6 +39,20 @@ public class ClientTest {
         employee.setEmail("martin.cs2017@gmail.com");
         employee.setSalary(50000L);
         employee.setDoj(new Date());
+
+        Address homeAddress = new Address();
+        homeAddress.setCity("Chennai");
+        homeAddress.setPincode(9087727L);
+        homeAddress.setState("Tamilnadu");
+        homeAddress.setStreet("Park Street");
+        employee.setHomeAddress(homeAddress);
+
+        Address officeAddress = new Address();
+        officeAddress.setCity("Pune");
+        officeAddress.setPincode(9087727L);
+        officeAddress.setState("Maharashtra");
+        officeAddress.setStreet("Park Street");
+        employee.setOfficeAddress(officeAddress);
         return employee;
     }
 }
