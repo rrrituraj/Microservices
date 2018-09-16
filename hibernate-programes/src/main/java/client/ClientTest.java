@@ -11,7 +11,7 @@ public class ClientTest {
         EmployeeService employeeService = new EmployeeServiceImpl();
         createEmployee(employeeService);
         getEmployeebyId(employeeService);
-        updateEmployeeById(employeeService);
+        //updateEmployeeById(employeeService);
         //deleteEmployeeById(employeeService);
     }
 
@@ -36,7 +36,7 @@ public class ClientTest {
         Employee employee= new Employee();
         employee.setEmployeeName("Martin Bingel");
         employee.setEmail("martin.cs2017@gmail.com");
-        employee.setSalary(50000l);
+        employee.setSalary(50000L);
         employee.setDoj(new Date());
         return employee;
     }

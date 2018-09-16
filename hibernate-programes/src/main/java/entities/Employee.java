@@ -2,12 +2,7 @@ package entities;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -17,7 +12,11 @@ import org.hibernate.annotations.DynamicUpdate;
 public class Employee {
 	@Id
 	@Column(name="employee_id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	/*@GeneratedValue(strategy=GenerationType.AUTO, generator = "empId_generator")
+	@SequenceGenerator(name = "empId_generator", initialValue = 2,allocationSize = 2,sequenceName = "empId_seq")*/
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "empId_generator")
+    @SequenceGenerator(name = "empId_generator", initialValue = 2,allocationSize = 2,sequenceName = "empId_seq")
 	private Integer employeeId;
 	
 	@Column(name="employee_name",length=100,nullable=false)
