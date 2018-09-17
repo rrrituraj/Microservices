@@ -57,6 +57,8 @@ public class ClientTest {
         //employee.setAddress(officeAddress);
         employee.getAddressList().add(homeAddress);
         employee.getAddressList().add(officeAddress);
+        homeAddress.setEmployee(employee);
+        officeAddress.setEmployee(employee);
         return employee;
     }
 }

@@ -19,6 +19,25 @@ public class Address {
     private String state;
     @Column(name = "pin_code")
     private Long pincode;
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public int getAddres_id() {
+        return addres_id;
+    }
+
+    public void setAddres_id(int addres_id) {
+        this.addres_id = addres_id;
+    }
 
     public String getStreet() {
         return street;

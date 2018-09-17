@@ -16,11 +16,12 @@ public class fetchDataEmployeeTest {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             employee = session.get(Employee.class, 2);
             System.out.println(employee);
+            if (employee != null) {
+                employee.getAddressList().forEach(System.out::println);
+            }
         } catch (HibernateException e) {
             e.printStackTrace();
         }
-       /* if (employee != null) {
-            employee.getAddressList().forEach(System.out::println);
-        }*/
+
     }
 }

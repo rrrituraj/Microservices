@@ -72,8 +72,8 @@ public class Employee {
         this.addressList = addressList;
     }*/
 
-   @OneToMany(cascade = CascadeType.ALL)
-   @JoinTable(name = "employee_address_table", joinColumns = @JoinColumn(name = "employee_id"),inverseJoinColumns = @JoinColumn(name = "address_id"))
+   @OneToMany(cascade = CascadeType.ALL,mappedBy = "employee")
+   //@JoinTable(name = "employee_address_table", joinColumns = @JoinColumn(name = "employee_id"),inverseJoinColumns = @JoinColumn(name = "address_id"))
    private List<Address> addressList = new ArrayList<>();
 
     public List<Address> getAddressList() {
