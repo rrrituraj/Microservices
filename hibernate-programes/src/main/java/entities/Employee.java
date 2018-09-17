@@ -1,6 +1,9 @@
 package entities;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -28,28 +31,33 @@ public class Employee {
     @Column(name = "date_of_joing")
     private Date doj;
 
-    @Embedded
-    @AttributeOverrides(value = {
-            @AttributeOverride(column = @Column(name = "home_Street_name", length = 50), name = "street"),
-            @AttributeOverride(column = @Column(name = "home_City", length = 20), name = "city"),
-            @AttributeOverride(column = @Column(name = "home_State", length = 20), name = "state"),
-            @AttributeOverride(column = @Column(name = "home_PinCode", length = 6), name = "pincode")
-    })
-    private Address homeAddress;
+   // private Address homeAddress;
 
-    @Embedded
+   /* @Embedded
     @AttributeOverrides(value = {
             @AttributeOverride(column = @Column(name = "office_Street_name", length = 50), name = "street"),
             @AttributeOverride(column = @Column(name = "office_City", length = 20), name = "city"),
             @AttributeOverride(column = @Column(name = "office_State", length = 20), name = "state"),
             @AttributeOverride(column = @Column(name = "office_PinCode", length = 6), name = "pincode")
-    })
-    private Address officeAddress;
+    })*/
+    //private Address officeAddress;
 
 
     @Column(name = "salary")
     private Long salary;
 
+    @ElementCollection
+    @JoinTable(name = "Address", joinColumns = @JoinColumn(name = "employee_id"))
+    private Collection<Address> addressList = new HashSet<>();
+
+    public Collection<Address> getAddressList() {
+        return addressList;
+    }
+
+
+    public void setAddressList(Collection<Address> addressList) {
+        this.addressList = addressList;
+    }
 
     public Integer getEmployeeId() {
         return employeeId;
@@ -91,7 +99,7 @@ public class Employee {
         this.salary = salary;
     }
 
-    public Address getHomeAddress() {
+   /* public Address getHomeAddress() {
         return homeAddress;
     }
 
@@ -106,7 +114,7 @@ public class Employee {
     public void setOfficeAddress(Address officeAddress) {
         this.officeAddress = officeAddress;
     }
-
+*/
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
