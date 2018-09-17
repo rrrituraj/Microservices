@@ -1,13 +1,13 @@
 package entities;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.CollectionId;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "employee_table")
@@ -19,7 +19,7 @@ public class Employee {
 	@SequenceGenerator(name = "empId_generator", initialValue = 2,allocationSize = 2,sequenceName = "empId_seq")*/
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "empId_generator")
-    @SequenceGenerator(name = "empId_generator", initialValue = 2, allocationSize = 2, sequenceName = "empId_seq")
+    @SequenceGenerator(name = "empId_generator", initialValue = 1, allocationSize = 1, sequenceName = "empId_seq")
     private Integer employeeId;
 
     @Column(name = "employee_name", length = 100, nullable = false)
@@ -31,7 +31,7 @@ public class Employee {
     @Column(name = "date_of_joing")
     private Date doj;
 
-   // private Address homeAddress;
+    // private Address homeAddress;
 
    /* @Embedded
     @AttributeOverrides(value = {
@@ -48,7 +48,9 @@ public class Employee {
 
     @ElementCollection
     @JoinTable(name = "Address", joinColumns = @JoinColumn(name = "employee_id"))
-    private Collection<Address> addressList = new HashSet<>();
+    @GenericGenerator(name = "sequence_gen", strategy = "sequence")
+    @CollectionId(columns = { @Column(name = "Add_Id") }, generator = "sequence_gen", type = @Type(type = "int"))
+    private Collection<Address> addressList = new ArrayList<>();
 
     public Collection<Address> getAddressList() {
         return addressList;
@@ -99,22 +101,22 @@ public class Employee {
         this.salary = salary;
     }
 
-   /* public Address getHomeAddress() {
-        return homeAddress;
-    }
+    /* public Address getHomeAddress() {
+         return homeAddress;
+     }
 
-    public void setHomeAddress(Address address) {
-        this.homeAddress = address;
-    }
+     public void setHomeAddress(Address address) {
+         this.homeAddress = address;
+     }
 
-    public Address getOfficeAddress() {
-        return officeAddress;
-    }
+     public Address getOfficeAddress() {
+         return officeAddress;
+     }
 
-    public void setOfficeAddress(Address officeAddress) {
-        this.officeAddress = officeAddress;
-    }
-*/
+     public void setOfficeAddress(Address officeAddress) {
+         this.officeAddress = officeAddress;
+     }
+ */
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
