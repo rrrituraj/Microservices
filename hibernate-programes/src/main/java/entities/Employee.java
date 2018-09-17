@@ -10,7 +10,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 @Entity
-@Table(name = "employee_table")
+@Table(name = "Employee")
 @DynamicUpdate
 public class Employee {
     @Id
@@ -31,6 +31,16 @@ public class Employee {
     @Column(name = "date_of_joing")
     private Date doj;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private  Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
     // private Address homeAddress;
 
    /* @Embedded
@@ -46,7 +56,7 @@ public class Employee {
     @Column(name = "salary")
     private Long salary;
 
-    @ElementCollection
+   /* @ElementCollection(fetch = FetchType.EAGER)
     @JoinTable(name = "Address", joinColumns = @JoinColumn(name = "employee_id"))
     @GenericGenerator(name = "sequence_gen", strategy = "sequence")
     @CollectionId(columns = { @Column(name = "Add_Id") }, generator = "sequence_gen", type = @Type(type = "int"))
@@ -59,7 +69,7 @@ public class Employee {
 
     public void setAddressList(Collection<Address> addressList) {
         this.addressList = addressList;
-    }
+    }*/
 
     public Integer getEmployeeId() {
         return employeeId;

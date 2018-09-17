@@ -54,8 +54,9 @@ public class ClientTest {
         officeAddress.setStreet("Park Street");
         //employee.setOfficeAddress(officeAddress);
 
-        employee.getAddressList().add(homeAddress);
-        employee.getAddressList().add(officeAddress);
+        employee.setAddress(officeAddress);
+        /*employee.getAddressList().add(homeAddress);
+        employee.getAddressList().add(officeAddress);*/
         return employee;
     }
 }
