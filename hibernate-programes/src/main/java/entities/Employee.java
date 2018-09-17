@@ -17,9 +17,9 @@ public class Employee {
     @Column(name = "employee_id")
 	/*@GeneratedValue(strategy=GenerationType.AUTO, generator = "empId_generator")
 	@SequenceGenerator(name = "empId_generator", initialValue = 2,allocationSize = 2,sequenceName = "empId_seq")*/
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "empId_generator")
-    @SequenceGenerator(name = "empId_generator", initialValue = 1, allocationSize = 1, sequenceName = "empId_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   /* @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "empId_generator")
+    @SequenceGenerator(name = "empId_generator", initialValue = 1, allocationSize = 1, sequenceName = "empId_seq")*/
     private Integer employeeId;
 
     @Column(name = "employee_name", length = 100, nullable = false)
@@ -31,7 +31,8 @@ public class Employee {
     @Column(name = "date_of_joing")
     private Date doj;
 
-    @OneToOne(cascade = CascadeType.ALL)
+   /* @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
     private  Address address;
 
     public Address getAddress() {
@@ -40,7 +41,7 @@ public class Employee {
 
     public void setAddress(Address address) {
         this.address = address;
-    }
+    }*/
     // private Address homeAddress;
 
    /* @Embedded
@@ -70,6 +71,18 @@ public class Employee {
     public void setAddressList(Collection<Address> addressList) {
         this.addressList = addressList;
     }*/
+
+   @OneToMany(cascade = CascadeType.ALL)
+   @JoinTable(name = "employee_address_table", joinColumns = @JoinColumn(name = "employee_id"),inverseJoinColumns = @JoinColumn(name = "address_id"))
+   private List<Address> addressList = new ArrayList<>();
+
+    public List<Address> getAddressList() {
+        return addressList;
+    }
+
+    public void setAddressList(List<Address> addressList) {
+        this.addressList = addressList;
+    }
 
     public Integer getEmployeeId() {
         return employeeId;
