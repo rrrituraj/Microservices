@@ -1,11 +1,13 @@
 package com.hbm.ritu.entities;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="student_table")
+@DiscriminatorValue(value = "Student_Type")
 public class Student extends Person {
 
 	@Column(name="school_name",length=50)

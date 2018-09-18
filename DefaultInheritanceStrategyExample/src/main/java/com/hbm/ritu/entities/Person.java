@@ -1,14 +1,12 @@
 package com.hbm.ritu.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="person_table")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "Record_Type", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorValue(value = "Person_Type")
 public class Person {
 	
 	@Id

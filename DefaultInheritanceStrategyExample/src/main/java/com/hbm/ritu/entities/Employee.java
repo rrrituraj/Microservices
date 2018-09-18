@@ -4,11 +4,13 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="employee_table")
+@DiscriminatorValue(value = "Employee_Type")
 public class Employee extends Person{
 	
 	@Column(name="salary",columnDefinition="DECIMAL(7,2)")
