@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="employee_table")
-@DiscriminatorValue(value = "Employee_Type")
+//@DiscriminatorValue(value = "Employee_Type")
 public class Employee extends Person{
 	
 	@Column(name="salary",columnDefinition="DECIMAL(7,2)")
