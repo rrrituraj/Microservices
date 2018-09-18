@@ -31,7 +31,10 @@ public class Employee {
     @Column(name = "date_of_joing")
     private Date doj;
 
-   /* @OneToOne(cascade = CascadeType.ALL)
+    @Column(name = "salary")
+    private Long salary;
+
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private  Address address;
 
@@ -41,7 +44,7 @@ public class Employee {
 
     public void setAddress(Address address) {
         this.address = address;
-    }*/
+    }
     // private Address homeAddress;
 
    /* @Embedded
@@ -54,8 +57,7 @@ public class Employee {
     //private Address officeAddress;
 
 
-    @Column(name = "salary")
-    private Long salary;
+
 
    /* @ElementCollection(fetch = FetchType.EAGER)
     @JoinTable(name = "Address", joinColumns = @JoinColumn(name = "employee_id"))
@@ -72,9 +74,10 @@ public class Employee {
         this.addressList = addressList;
     }*/
 
-   @OneToMany(cascade = CascadeType.ALL,mappedBy = "employee")
-   //@JoinTable(name = "employee_address_table", joinColumns = @JoinColumn(name = "employee_id"),inverseJoinColumns = @JoinColumn(name = "address_id"))
-   private List<Address> addressList = new ArrayList<>();
+    //@OneToMany(cascade = CascadeType.ALL,mappedBy = "employee")
+    /*@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "employee_address_table", joinColumns = @JoinColumn(name = "employee_id"), inverseJoinColumns = @JoinColumn(name = "address_id"))
+    private List<Address> addressList = new ArrayList<>();
 
     public List<Address> getAddressList() {
         return addressList;
@@ -82,7 +85,7 @@ public class Employee {
 
     public void setAddressList(List<Address> addressList) {
         this.addressList = addressList;
-    }
+    }*/
 
     public Integer getEmployeeId() {
         return employeeId;

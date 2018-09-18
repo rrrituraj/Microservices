@@ -40,6 +40,12 @@ public class ClientTest {
         employee.setSalary(50000L);
         employee.setDoj(new Date());
 
+        Employee employee2= new Employee();
+        employee.setEmployeeName("Sean Bingel");
+        employee.setEmail("sean.cs2017@gmail.com");
+        employee.setSalary(70000L);
+        employee.setDoj(new Date());
+
         Address homeAddress = new Address();
         homeAddress.setCity("Chennai");
         homeAddress.setPincode(9087727L);
@@ -57,8 +63,10 @@ public class ClientTest {
         //employee.setAddress(officeAddress);
         employee.getAddressList().add(homeAddress);
         employee.getAddressList().add(officeAddress);
-        homeAddress.setEmployee(employee);
-        officeAddress.setEmployee(employee);
+       /* homeAddress.setEmployee(employee);
+        officeAddress.setEmployee(employee);*/
+       homeAddress.getEmployeeList().add(employee);
+       homeAddress.getEmployeeList().add(employee2);
         return employee;
     }
 }
