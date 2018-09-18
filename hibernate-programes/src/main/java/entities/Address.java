@@ -32,18 +32,18 @@ public class Address {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }*/
-    @ManyToMany (cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+   /* @ManyToMany (cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinTable(name = "address_employee_table", joinColumns = @JoinColumn(name = "address_id"),inverseJoinColumns = @JoinColumn(name = "employee_id"))
-    private List<Employee> employeeList = new ArrayList<>();
+    private List<Employee> employeeList = new ArrayList<>();*/
 
-    public List<Employee> getEmployeeList() {
+   /* public List<Employee> getEmployeeList() {
         return employeeList;
     }
 
     public void setEmployeeList(List<Employee> employeeList) {
         this.employeeList = employeeList;
     }
-
+*/
     public int getAddres_id() {
         return addres_id;
     }

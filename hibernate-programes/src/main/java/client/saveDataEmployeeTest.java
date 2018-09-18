@@ -44,19 +44,19 @@ public class saveDataEmployeeTest {
             address3.setState("DL");
             address3.setStreet("PQR Street");
 
-            employee1.getAddressList().add(address1);
+           /* employee1.getAddressList().add(address1);
             employee1.getAddressList().add(address2);
-            employee1.getAddressList().add(address3);
+            employee1.getAddressList().add(address3);*/
 
-            address1.getEmployeeList().add(employee1);
+            /*address1.getEmployeeList().add(employee1);
             address2.getEmployeeList().add(employee1);
             address3.getEmployeeList().add(employee1);
 
-            employee2.getAddressList().add(address2);
-            employee2.getAddressList().add(address3);
+           *//* employee2.getAddressList().add(address2);
+            employee2.getAddressList().add(address3);*//*
 
             address2.getEmployeeList().add(employee2);
-            address3.getEmployeeList().add(employee2);
+            address3.getEmployeeList().add(employee2);*/
 
             session.persist(employee1);
             session.persist(employee2);

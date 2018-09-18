@@ -17,7 +17,7 @@ public class fetchDataEmployeeTest {
             employee = session.get(Employee.class, 2);
             System.out.println(employee);
             if (employee != null) {
-                employee.getAddressList().forEach(System.out::println);
+               // employee.getAddressList().forEach(System.out::println);
             }
         } catch (HibernateException e) {
             e.printStackTrace();

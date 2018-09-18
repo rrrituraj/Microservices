@@ -61,12 +61,12 @@ public class ClientTest {
         //employee.setOfficeAddress(officeAddress);
 
         //employee.setAddress(officeAddress);
-        employee.getAddressList().add(homeAddress);
-        employee.getAddressList().add(officeAddress);
+      //  employee.getAddressList().add(homeAddress);
+        //employee.getAddressList().add(officeAddress);
        /* homeAddress.setEmployee(employee);
         officeAddress.setEmployee(employee);*/
-       homeAddress.getEmployeeList().add(employee);
-       homeAddress.getEmployeeList().add(employee2);
+   /*    homeAddress.getEmployeeList().add(employee);
+       homeAddress.getEmployeeList().add(employee2);*/
         return employee;
     }
 }
