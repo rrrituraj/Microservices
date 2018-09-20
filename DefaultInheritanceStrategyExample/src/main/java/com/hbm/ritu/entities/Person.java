@@ -4,13 +4,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="person_table")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 /*@DiscriminatorColumn(name = "Record_Type", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue(value = "Person_Type")*/
 public class Person {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
@@ -38,4 +38,13 @@ public class Person {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                '}';
+    }
 }

@@ -3,17 +3,49 @@ package com.hbm.ritu.entities;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="employee_table")
 //@DiscriminatorValue(value = "Employee_Type")
-public class Employee extends Person{
-	
-	@Column(name="salary",columnDefinition="DECIMAL(7,2)")
+public class Employee{
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "emp_id")
+    private int empId;
+
+	@Column(name = "emp_name",nullable = false)
+	private String name;
+
+    public int getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(int empId) {
+        this.empId = empId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+
+    @Column(name = "gender",nullable = false)
+	private char gender;
+
+	@Column(name="salary",columnDefinition="DECIMAL(8,2)")
 	private Double salary;
 	
 	@Column(name="date_of_joining")
@@ -25,7 +57,7 @@ public class Employee extends Person{
 	@Column(name="bonus",precision=6,scale=3)
 	private BigDecimal bonus;
 	
-	@Column(name="email",length=30,unique=true)
+	@Column(name="email",length=30,unique=false)
 	private String email;
 	
 	public Double getSalary() {
@@ -60,4 +92,18 @@ public class Employee extends Person{
 	public BigDecimal getBonus() {
 		return bonus;
 	}
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "empId=" + empId +
+                ", name='" + name + '\'' +
+                ", gender=" + gender +
+                ", salary=" + salary +
+                ", doj=" + doj +
+                ", deptName='" + deptName + '\'' +
+                ", bonus=" + bonus +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
