@@ -1,5 +1,8 @@
 package com.hbm.ritu.entities;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -7,6 +10,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="employee_table")
+@DynamicInsert
+@DynamicUpdate
 //@DiscriminatorValue(value = "Employee_Type")
 public class Employee{
 
@@ -59,8 +64,20 @@ public class Employee{
 	
 	@Column(name="email",length=30,unique=false)
 	private String email;
-	
-	public Double getSalary() {
+
+	@OneToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="address_id")
+	private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Double getSalary() {
 		return salary;
 	}
 	public void setSalary(Double salary) {
